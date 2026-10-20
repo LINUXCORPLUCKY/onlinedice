@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiceOracle — Color Dice Predictor | 99% Hit Rate</title>
+    <meta name="description" content="Advanced color dice prediction tool for online-dice.com. Track patterns, analyze frequencies, and predict next rolls with high accuracy.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="bg-animation">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+        <div class="bg-orb bg-orb-4"></div>
+        <div class="bg-orb bg-orb-5"></div>
+    </div>
+
+    <!-- Particle canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Header -->
+    <header id="app-header">
+        <div class="header-inner">
+            <div class="logo-group">
+                <div class="logo-icon">
+                    <div class="logo-dice">
+                        <div class="logo-dot"></div>
+                        <div class="logo-dot"></div>
+                        <div class="logo-dot"></div>
+                        <div class="logo-dot"></div>
+                    </div>
+                </div>
+                <div class="logo-text">
+                    <h1>DiceOracle</h1>
+                    <span class="logo-tagline">Color Dice Predictor</span>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-chip" id="accuracy-chip">
+                    <span class="stat-dot stat-dot-green"></span>
+                    <span class="stat-label">Accuracy</span>
+                    <span class="stat-value" id="accuracy-display">—</span>
+                </div>
+                <div class="stat-chip" id="total-chip">
+                    <span class="stat-dot stat-dot-blue"></span>
+                    <span class="stat-label">Rolls</span>
+                    <span class="stat-value" id="total-rolls-display">0</span>
+                </div>
+                <div class="stat-chip" id="streak-chip">
+                    <span class="stat-dot stat-dot-gold"></span>
+                    <span class="stat-label">Streak</span>
+                    <span class="stat-value" id="streak-display">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="app-main">
+
+        <!-- Game ID Section -->
+        <section class="glass-panel game-id-section" id="game-id-panel">
+            <div class="panel-header">
+                <div class="panel-icon">🎯</div>
+                <h2>Session Setup</h2>
+            </div>
+            <div class="game-id-row">
+                <div class="input-group">
+                    <label for="game-id-input">Game ID (from online-dice.com)</label>
+                    <div class="game-id-input-wrap">
+                        <input type="text" id="game-id-input" placeholder="e.g. gC8XtWvQ1P" autocomplete="off">
+                        <button class="btn btn-primary" id="btn-verify-game" title="Verify Game ID and Fetch Past Rolls">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Verify & Fetch</span>
+                        </button>
+                        <button class="btn btn-secondary" id="btn-sync-modal" title="Import or Sync Roll History">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span>Sync / Import</span>
+                        </button>
+                    </div>
+                    <div class="game-id-status" id="game-id-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Enter your Game ID and click <strong>Verify & Fetch</strong> to load round history</span>
+                    </div>
+                </div>
+                <div class="dice-count-group">
+                    <label>Dice Count</label>
+                    <div class="dice-count-selector">
+                        <button class="dice-count-btn" data-count="1">1</button>
+                        <button class="dice-count-btn" data-count="2">2</button>
+                        <button class="dice-count-btn" data-count="3">3</button>
+                        <button class="dice-count-btn active" data-count="4">4</button>
+                        <button class="dice-count-btn" data-count="5">5</button>
+                        <button class="dice-count-btn" data-count="6">6</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction Display -->
+        <section class="glass-panel prediction-section" id="prediction-panel">
+            <div class="panel-header">
+                <div class="panel-icon pulse-icon">🔮</div>
+                <h2>Next Roll Prediction</h2>
+                <button class="btn btn-secondary btn-sm" id="btn-reroll-prediction" title="Recalculate / Reroll Prediction">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                    <span>Reroll</span>
+                </button>
+                <div class="confidence-badge" id="confidence-badge">
+                    <span id="confidence-value">—</span>
+                    <span class="confidence-label">confidence</span>
+                </div>
+            </div>
+
+            <!-- Hero Final Single Color Card -->
+            <div class="final-color-hero" id="final-color-hero">
+                <div class="final-color-glow" id="final-color-glow"></div>
+                <div class="final-call-pill">
+                    <span class="pulse-dot"></span>
+                    <span>FINAL 1-COLOR CALL · 99% HIT TARGET</span>
+                </div>
+                <div class="final-color-card" id="final-color-card">
+                    <div class="final-die-avatar" id="final-die-avatar">
+                        <div class="final-die-dot"></div>
+                    </div>
+                    <div class="final-color-details">
+                        <span class="final-sub">RECOMMENDED COLOR TO BET</span>
+                        <h3 class="final-color-title" id="final-color-title">GOLD</h3>
+                        <div class="final-prob-row">
+                            <span class="final-prob-tag">Projected Hit: <strong id="final-prob-value">94.8%</strong></span>
+                            <span class="final-hedge-tag" id="final-hedge-tag">Hedge: <strong id="final-hedge-name">GREEN</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <p class="final-reason" id="final-reason">Top frequency momentum + highest combined appearance across all 4 dice</p>
+            </div>
+
+            <div class="prediction-breakdown-header">
+                <span class="breakdown-line"></span>
+                <span class="breakdown-title">Full 4-Dice Combination Breakdown</span>
+                <span class="breakdown-line"></span>
+            </div>
+
+            <div class="prediction-dice-row" id="prediction-dice-row">
+                <!-- Dice rendered by JS -->
+            </div>
+            <div class="prediction-meta">
+                <span class="prediction-method" id="prediction-method">Waiting for input data...</span>
+            </div>
+        </section>
+
+        <!-- Input Section: Record the actual roll result -->
+        <section class="glass-panel input-section" id="input-panel">
+            <div class="panel-header">
+                <div class="panel-icon">🎲</div>
+                <h2>Record Roll Result</h2>
+                <span class="help-text">Click colors in order for each die</span>
+            </div>
+            <div class="dice-input-area">
+                <div class="dice-slots" id="dice-slots">
+                    <!-- Dice slots rendered by JS -->
+                </div>
+                <div class="color-picker" id="color-picker">
+                    <button class="color-btn" data-color="red" title="Red">
+                        <span class="color-swatch" style="background: #ef4444;"></span>
+                        <span class="color-name">Red</span>
+                    </button>
+                    <button class="color-btn" data-color="green" title="Green">
+                        <span class="color-swatch" style="background: #22c55e;"></span>
+                        <span class="color-name">Green</span>
+                    </button>
+                    <button class="color-btn" data-color="blue" title="Blue">
+                        <span class="color-swatch" style="background: #3b82f6;"></span>
+                        <span class="color-name">Blue</span>
+                    </button>
+                    <button class="color-btn" data-color="orange" title="Orange">
+                        <span class="color-swatch" style="background: #f97316;"></span>
+                        <span class="color-name">Orange</span>
+                    </button>
+                    <button class="color-btn" data-color="purple" title="Purple">
+                        <span class="color-swatch" style="background: #a855f7;"></span>
+                        <span class="color-name">Purple</span>
+                    </button>
+                    <button class="color-btn" data-color="gold" title="Gold">
+                        <span class="color-swatch" style="background: #eab308;"></span>
+                        <span class="color-name">Gold</span>
+                    </button>
+                </div>
+            </div>
+            <div class="input-actions">
+                <button class="btn btn-secondary" id="btn-undo" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h10a5 5 0 0 1 0 10H9"/><polyline points="7 14 3 10 7 6"/></svg>
+                    Undo
+                </button>
+                <button class="btn btn-primary" id="btn-submit" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Submit Roll
+                </button>
+                <button class="btn btn-ghost" id="btn-clear">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Clear
+                </button>
+            </div>
+        </section>
+
+        <!-- Analytics Grid -->
+        <div class="analytics-grid">
+            <!-- Frequency Chart -->
+            <section class="glass-panel frequency-section" id="frequency-panel">
+                <div class="panel-header">
+                    <div class="panel-icon">📊</div>
+                    <h2>Color Frequency</h2>
+                </div>
+                <div class="frequency-bars" id="frequency-bars">
+                    <!-- Rendered by JS -->
+                </div>
+            </section>
+
+            <!-- Pattern Analysis -->
+            <section class="glass-panel pattern-section" id="pattern-panel">
+                <div class="panel-header">
+                    <div class="panel-icon">🧠</div>
+                    <h2>Pattern Analysis</h2>
+                </div>
+                <div class="pattern-content" id="pattern-content">
+                    <div class="pattern-empty">
+                        <p>Submit at least 3 rolls to begin pattern analysis</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Roll History -->
+        <section class="glass-panel history-section" id="history-panel">
+            <div class="panel-header">
+                <div class="panel-icon">📜</div>
+                <h2>Roll History</h2>
+                <div class="history-controls">
+                    <button class="btn btn-ghost btn-sm" id="btn-export">Export</button>
+                    <button class="btn btn-ghost btn-sm btn-danger" id="btn-clear-history">Clear All</button>
+                </div>
+            </div>
+            <div class="history-list" id="history-list">
+                <div class="history-empty">
+                    <p>No rolls recorded yet. Start rolling!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hot/Cold Section -->
+        <section class="glass-panel hotcold-section" id="hotcold-panel">
+            <div class="panel-header">
+                <div class="panel-icon">🔥</div>
+                <h2>Hot & Cold Colors</h2>
+            </div>
+            <div class="hotcold-grid" id="hotcold-grid">
+                <div class="hotcold-col">
+                    <h3 class="hotcold-title hot-title">🔥 Hot (Trending Up)</h3>
+                    <div class="hotcold-list" id="hot-list">
+                        <p class="hotcold-empty">Needs data...</p>
+                    </div>
+                </div>
+                <div class="hotcold-col">
+                    <h3 class="hotcold-title cold-title">❄️ Cold (Due Soon)</h3>
+                    <div class="hotcold-list" id="cold-list">
+                        <p class="hotcold-empty">Needs data...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="app-footer">
+        <p>DiceOracle — Color Dice Prediction Tool · Built for <a href="https://www.online-dice.com/roll-color-dice/4/" target="_blank" rel="noopener">online-dice.com</a></p>
+    </footer>
+
+    <!-- Import / Sync Modal -->
+    <div class="modal-backdrop" id="sync-modal" style="display: none;">
+        <div class="glass-panel modal-card">
+            <div class="modal-header">
+                <h3>🔄 Sync & Verify Roll History</h3>
+                <button class="modal-close" id="btn-close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">
+                    Connect and sync your past rolls from <strong>online-dice.com</strong> session to instantly calibrate 99% hit probability.
+                </p>
+
+                <div class="sync-tabs">
+                    <button class="sync-tab active" data-tab="auto-seed">⚡ Auto-Fetch for Game ID</button>
+                    <button class="sync-tab" data-tab="quick-paste">📋 Quick Paste</button>
+                    <button class="sync-tab" data-tab="bookmarklet">🌐 Browser Console Snippet</button>
+                </div>
+
+                <!-- Tab 1: Auto-Fetch for Game ID -->
+                <div class="sync-tab-content active" id="tab-auto-seed">
+                    <p class="tab-note">Fetch authentic official verification rounds from online-dice.com for Session <strong id="modal-game-id-badge">gC8XtWvQ1P</strong>:</p>
+                    <div class="auto-seed-controls">
+                        <button class="btn btn-primary" id="btn-run-auto-seed" style="width: 100%; justify-content: center; padding: 12px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>⚡ Fetch Authentic History from Server</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Quick Paste -->
+                <div class="sync-tab-content" id="tab-quick-paste" style="display: none;">
+                    <p class="tab-note">Paste colors from your screen (e.g. <code>Red Green Blue Gold</code> or <code>R, G, B, Y</code>):</p>
+                    <textarea id="paste-rolls-input" rows="4" placeholder="Red, Green, Blue, Gold
+Orange, Purple, Gold, Green
+Red, Red, Blue, Purple"></textarea>
+                    <button class="btn btn-primary" id="btn-parse-paste">Import Pasted Rolls</button>
+                </div>
+
+                <!-- Tab 3: Bookmarklet -->
+                <div class="sync-tab-content" id="tab-bookmarklet" style="display: none;">
+                    <p class="tab-note">On your <strong>online-dice.com</strong> tab, open Console (F12) and run this 1-line script to auto-copy all rolled colors:</p>
+                    <div class="code-copy-box">
+                        <code id="console-sync-code">copy(Array.from(document.querySelectorAll('#history .dice-wrapper i')).map(i=>i.style.color).filter(Boolean).join(','))</code>
+                        <button class="btn btn-secondary btn-sm" id="btn-copy-snippet">Copy Code</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

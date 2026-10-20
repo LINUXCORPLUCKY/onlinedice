@@ -1,0 +1,179 @@
+{
+  "pageUrl": "https://www.online-dice.com/roll-color-dice/4/",
+  "pageTitle": "4 Color Dice — Roll 6-Sided Color Dice | Online-Dice.com",
+  "exportedAt": "2026-10-20T13:56:14.419Z",
+  "detectedServices": [],
+  "apis": [
+    {
+      "id": "xhr_1792504564875_eltd2",
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxWERAuMqkNjc9ncdBczlKOmQ7HfmoJjt0JW2pmdY_QzUT9Gsx4ZHX1md95dwgR7hpft-OSpNKUIMUM-CI9u1CYswR1GmD8xyvcuQ_JxNsos2mruoklayatpcKCOwviFd28nQq1Qcg==",
+      "method": "POST",
+      "status": 204,
+      "statusText": "",
+      "type": "xhr",
+      "mimeType": "text/html; charset=utf-8",
+      "time": 80,
+      "requestBody": "[null,null,null,null,null,null,null,[[0,null,1]],1792504564875,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0]",
+      "responseHeaders": {
+        "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+        "content-length": "0",
+        "content-type": "text/html; charset=utf-8",
+        "expires": "Mon, 01 Jan 1990 00:00:00 GMT",
+        "pragma": "no-cache"
+      },
+      "responseBody": ""
+    },
+    {
+      "id": "xhr_1792504564875_7kp0m",
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxWm--FePrO4iVKH3RysQ9Cu0JGFzS4_wq0NUMIBADI3yL-tHhFPEbSzMh6YsGcK_AMgV_zQZtXlNTOYIHNks4DcWCyY85lTgQvHBhZhMArlk1J9thDW633ufyAiB1tYR146TdeKUg==",
+      "method": "POST",
+      "status": 204,
+      "statusText": "",
+      "type": "xhr",
+      "mimeType": "text/html; charset=utf-8",
+      "time": 77,
+      "requestBody": "[null,null,null,null,null,null,null,null,1792504564875,null,null,null,null,null,null,null,null,null,null,null,[[1,305,\"www.online-dice.com\",\"online-dice.com\",3]]]",
+      "responseHeaders": {
+        "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+        "content-length": "0",
+        "content-type": "text/html; charset=utf-8",
+        "expires": "Mon, 01 Jan 1990 00:00:00 GMT",
+        "pragma": "no-cache"
+      },
+      "responseBody": ""
+    },
+    {
+      "id": "xhr_1792504564778_4t37n",
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxWZJ6UUb-5zjY1Wzeumnh8SZtGEovAysnXMRZMTazCc1NjyAAWtMM_QLZuWEzrYtLmsKs9lb4af9bNAJoM3JxZyR6SC_Y6bzFTSaLcjTyrhbHeUpW7enTiTRAhgAM6BEJVuz5lCYQ==",
+      "method": "POST",
+      "status": 204,
+      "statusText": "",
+      "type": "xhr",
+      "mimeType": "text/html; charset=utf-8",
+      "time": 79,
+      "requestBody": "[null,null,null,null,null,null,null,null,1792504564778,null,null,null,null,null,null,null,null,null,null,null,[[1,156,\"www.online-dice.com\",\"online-dice.com\",1]]]",
+      "responseHeaders": {
+        "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+        "content-length": "0",
+        "content-type": "text/html; charset=utf-8",
+        "expires": "Mon, 01 Jan 1990 00:00:00 GMT",
+        "pragma": "no-cache"
+      },
+      "responseBody": ""
+    },
+    {
+      "id": "xhr_1792504564584_wxgrl",
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxWERAuMqkNjc9ncdBczlKOmQ7HfmoJjt0JW2pmdY_QzUT9Gsx4ZHX1md95dwgR7hpft-OSpNKUIMUM-CI9u1CYswR1GmD8xyvcuQ_JxNsos2mruoklayatpcKCOwviFd28nQq1Qcg==",
+      "method": "POST",
+      "status": 204,
+      "statusText": "",
+      "type": "xhr",
+      "mimeType": "text/html; charset=utf-8",
+      "time": 79,
+      "requestBody": "[null,null,null,null,null,null,null,null,1792504564584,null,null,[null,[1]],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0]",
+      "responseHeaders": {
+        "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+        "content-length": "0",
+        "content-type": "text/html; charset=utf-8",
+        "expires": "Mon, 01 Jan 1990 00:00:00 GMT",
+        "pragma": "no-cache"
+      },
+      "responseBody": ""
+    },
+    {
+      "id": "xhr_1792504564584_dxi0h",
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxWERAuMqkNjc9ncdBczlKOmQ7HfmoJjt0JW2pmdY_QzUT9Gsx4ZHX1md95dwgR7hpft-OSpNKUIMUM-CI9u1CYswR1GmD8xyvcuQ_JxNsos2mruoklayatpcKCOwviFd28nQq1Qcg==",
+      "method": "POST",
+      "status": 204,
+      "statusText": "",
+      "type": "xhr",
+      "mimeType": "text/html; charset=utf-8",
+      "time": 77,
+      "requestBody": "[null,null,null,null,null,null,null,null,1792504564584,null,null,[[3,1]],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0]",
+      "responseHeaders": {
+        "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+        "content-length": "0",
+        "content-type": "text/html; charset=utf-8",
+        "expires": "Mon, 01 Jan 1990 00:00:00 GMT",
+        "pragma": "no-cache"
+      },
+      "responseBody": ""
+    },
+    {
+      "id": "xhr_1792504564493_d4rr6",
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxWERAuMqkNjc9ncdBczlKOmQ7HfmoJjt0JW2pmdY_QzUT9Gsx4ZHX1md95dwgR7hpft-OSpNKUIMUM-CI9u1CYswR1GmD8xyvcuQ_JxNsos2mruoklayatpcKCOwviFd28nQq1Qcg==",
+      "method": "POST",
+      "status": 204,
+      "statusText": "",
+      "type": "xhr",
+      "mimeType": "text/html; charset=utf-8",
+      "time": 85,
+      "requestBody": "[null,null,null,null,null,null,null,null,1792504564493,null,null,[[1,1]],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0]",
+      "responseHeaders": {
+        "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+        "content-length": "0",
+        "content-type": "text/html; charset=utf-8",
+        "expires": "Mon, 01 Jan 1990 00:00:00 GMT",
+        "pragma": "no-cache"
+      },
+      "responseBody": ""
+    },
+    {
+      "id": "xhr_1792504564494_8iar5",
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxWERAuMqkNjc9ncdBczlKOmQ7HfmoJjt0JW2pmdY_QzUT9Gsx4ZHX1md95dwgR7hpft-OSpNKUIMUM-CI9u1CYswR1GmD8xyvcuQ_JxNsos2mruoklayatpcKCOwviFd28nQq1Qcg==",
+      "method": "POST",
+      "status": 204,
+      "statusText": "",
+      "type": "xhr",
+      "mimeType": "text/html; charset=utf-8",
+      "time": 83,
+      "requestBody": "[null,null,null,null,null,null,null,null,1792504564494,null,null,[[2,1]],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0]",
+      "responseHeaders": {
+        "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+        "content-length": "0",
+        "content-type": "text/html; charset=utf-8",
+        "expires": "Mon, 01 Jan 1990 00:00:00 GMT",
+        "pragma": "no-cache"
+      },
+      "responseBody": ""
+    },
+    {
+      "id": "xhr_1792504563770_dv6hk",
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxWERAuMqkNjc9ncdBczlKOmQ7HfmoJjt0JW2pmdY_QzUT9Gsx4ZHX1md95dwgR7hpft-OSpNKUIMUM-CI9u1CYswR1GmD8xyvcuQ_JxNsos2mruoklayatpcKCOwviFd28nQq1Qcg==",
+      "method": "POST",
+      "status": 204,
+      "statusText": "",
+      "type": "xhr",
+      "mimeType": "text/html; charset=utf-8",
+      "time": 82,
+      "requestBody": "[null,null,null,null,null,null,null,null,1792504563770,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,[null,null,[5053687196668288]]]",
+      "responseHeaders": {
+        "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+        "content-length": "0",
+        "content-type": "text/html; charset=utf-8",
+        "expires": "Mon, 01 Jan 1990 00:00:00 GMT",
+        "pragma": "no-cache"
+      },
+      "responseBody": ""
+    },
+    {
+      "id": "xhr_1792504563770_g9y73",
+      "url": "https://fundingchoicesmessages.google.com/el/AGSKWxWERAuMqkNjc9ncdBczlKOmQ7HfmoJjt0JW2pmdY_QzUT9Gsx4ZHX1md95dwgR7hpft-OSpNKUIMUM-CI9u1CYswR1GmD8xyvcuQ_JxNsos2mruoklayatpcKCOwviFd28nQq1Qcg==",
+      "method": "POST",
+      "status": 204,
+      "statusText": "",
+      "type": "xhr",
+      "mimeType": "text/html; charset=utf-8",
+      "time": 75,
+      "requestBody": "[null,null,null,null,null,null,null,null,1792504563770,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,[null,[\"ID=7c7b1f3b6831622e:T=1792235462:RT=1792504446:S=ALNI_MacRZwj2RPzdhrJaqal7TtFcjNd6w\"]]]",
+      "responseHeaders": {
+        "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+        "content-length": "0",
+        "content-type": "text/html; charset=utf-8",
+        "expires": "Mon, 01 Jan 1990 00:00:00 GMT",
+        "pragma": "no-cache"
+      },
+      "responseBody": ""
+    }
+  ]
+}
